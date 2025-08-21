@@ -1,4 +1,5 @@
-import { type ConsultantType } from "~/shared/types/consultant.type";
+import { ConsultantContext } from "~/shared/context/ConsultantContextType";
+import { type ConsultantType } from "~/shared/types/ConsultantType";
 
 interface ConsultantProps {
     children?: React.ReactNode;
@@ -7,11 +8,10 @@ interface ConsultantProps {
 
 export const Consultant: React.FC<ConsultantProps> = ({children, consultant}) => {
 
-    return (<div>
-        <p>{consultant.id}</p>
-        <p>{consultant.name}</p>
-        <p>{consultant.role}</p>
-        <p>{consultant.skills}</p>
-        <div>{ children }</div>
-        </div>);
+    return (
+        <ConsultantContext.Provider value={{consultant}}>
+        <div>
+            { children }
+        </div>
+        </ConsultantContext.Provider>);
 }
