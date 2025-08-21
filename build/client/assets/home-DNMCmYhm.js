@@ -1,0 +1,1 @@
+import{p as t,w as e}from"./chunk-UH6JLGW7-BnjEZNfp.js";const n=()=>t.jsx("main",{className:"flex items-center justify-center pt-16 pb-4",children:t.jsx("div",{children:"Dashboard"})});function s({}){return[{title:"New React Router App test"},{name:"description",content:"Welcome to React Router!"}]}const a=e(function(){return t.jsx(n,{})});export{a as default,s as meta};
