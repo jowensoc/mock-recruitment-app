@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { Consultant } from "~/shared/components/consultant/consultant";
+import { Consultant, ConsultantDashboard } from "~/shared/components/consultant/consultant-component";
 import { DataService } from "~/shared/services/dataService";
 
 export const Dashboard = () => {
@@ -27,12 +27,19 @@ export const Dashboard = () => {
         <div>Dashboard</div>
         { consultant ?
             <div>
-                <Consultant consultant={{id:consultant.id, 
-                                        name:consultant.name, 
-                                        role:consultant.role, 
-                                        skills:consultant.skills}}>
+                <Consultant key={consultant.id} 
+                            consultant={{id:consultant.id, 
+                            name:consultant.name, 
+                            role:consultant.role, 
+                            skills:consultant.skills,
+                            location: "England",
+                            availabilityStatus: "Available"}}>
+                    <ConsultantDashboard/>
                 </Consultant>
-                <div><button onClick={() => handleClick()}>Next</button></div>
+                <div>
+                    <button onClick={() => handleClick()}>No</button>
+                    <button onClick={() => handleClick()}>Yes</button>
+                </div>
             </div>
         : <p>No Consultant details</p>}
     </main>);
