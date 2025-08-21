@@ -1,0 +1,145 @@
+[
+    {
+        "id": 1,
+        "name": "Kermit",
+        "role": "Senior Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "kermit.png"
+    },
+    {
+        "id": 2,
+        "name": "Miss Piggy",
+        "role": "Senior Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "miss-piggy.png"
+    },
+    {
+        "id": 3,
+        "name": "Gonzo",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "gonzo.png"
+    },
+    {
+        "id": 4,
+        "name": "Elmo",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "elmo.png"
+    },
+    {
+        "id": 5,
+        "name": "Animal",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "animal.png"
+    },
+    {
+        "id": 6,
+        "name": "Fozzie Bear",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "fonzie-bear.png"
+    },
+    {
+        "id": 7,
+        "name": "Rowlf the Dog",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "scooter.png"
+    },
+    {
+        "id": 8,
+        "name": "Rizzo the Rat",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "rizzo-the-rat.png"
+    },
+    {
+        "id": 9,
+        "name": "Dr. Bunsen",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "dr-bunsen.png"
+    },
+    {
+        "id": 10,
+        "name": "Beaker",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "kermit.png"
+    },
+    {
+        "id": 11,
+        "name": "The Swedish Chef",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "the-swedish-chef.png"
+    },
+    {
+        "id": 12,
+        "name": "Statler",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "statler.png"
+    },
+    {
+        "id": 12,
+        "name": "Waldorf",
+        "role": "Consultant",
+        "skills": [
+            "Java",
+            "React",
+            "AWS"
+        ],
+        "thumbnail": "waldorf.png"
+    }
+]
