@@ -9,9 +9,22 @@ export const DataService = () => {
         return results;
     }
 
+    const getNextConsultant = (id: number) => {
+        id += 1;
+        const results = data.find((item) => item.id == id);
+
+        // return first record
+        if (!results) {
+            return data[0];
+        }
+
+        return results;
+    }
+
     return {
         getAllConsultants,
-        getConsultantByID
+        getConsultantByID,
+        getNextConsultant
     }
 }
 
