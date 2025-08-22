@@ -24,9 +24,9 @@ export const Dashboard = () => {
     };
 
     return (<main className="flex items-center justify-center pt-16 pb-4">
-        <div>Dashboard</div>
+        <div className="size-40 self-start pl-5"><h2>recruit your team</h2></div>
         { consultant ?
-            <div>
+            <div className="bg-gray-100 rounded-md p-3">
                 <Consultant key={consultant.id} 
                             consultant={{id:consultant.id, 
                             name:consultant.name, 
@@ -37,9 +37,13 @@ export const Dashboard = () => {
                             availability: consultant.availability}}>
                     <ConsultantDashboard/>
                 </Consultant>
-                <div>
-                    <button onClick={() => handleClick()}>No</button>
-                    <button onClick={() => handleClick()}>Yes</button>
+                <div className="grid grid-cols-2 gap-10 pt-5">
+                    <div className="place-self-end bg-blue-300">
+                        <button className="bg-red-500 p-2 rounded-md" onClick={() => handleClick()}>No</button>
+                    </div>
+                    <div className="place-self-start bg-blue-300">
+                        <button className="bg-green-500 p-2 rounded-md" onClick={() => handleClick()}>Yes</button>
+                    </div>
                 </div>
             </div>
         : <p>No Consultant details</p>}

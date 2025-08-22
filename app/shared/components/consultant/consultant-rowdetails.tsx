@@ -1,15 +1,18 @@
 import { ConsultantContext, useConsultantContext } from "~/shared/context/ConsultantContextType";
+import { getAvailabilityClass } from "~/shared/utils/helpers";
 
 export const ConsultantRowDetails = () => {
     const { consultant } = useConsultantContext();
     const thumbnail = "/app/assets/images/" + consultant.thumbnail
 
     return (<ConsultantContext.Provider value={{consultant}}>
+            <div className="bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-2">
                 <div>
                     <img src={thumbnail}
                     alt={consultant.name}
                     title={consultant.name} 
-                    width="150px"/>
+                    className="h-28 object-contain border-3 border-blue-600 rounded-md"
+                    />
                 </div>
                 <div>
                     <div>
@@ -23,7 +26,7 @@ export const ConsultantRowDetails = () => {
                         <p>Skills: { consultant?.skills?.join(", ") }</p>
                     </div>
                     <div>
-                        <p>Availablity: { consultant?.availability }</p>
+                       <p>Availablity: <span className={getAvailabilityClass(consultant?.availability)}>{ consultant?.availability }</span></p>
                     </div>
                     <div>
                         <p> Experience: Vivamus at accumsan ligula. 
@@ -35,6 +38,6 @@ export const ConsultantRowDetails = () => {
                             accumsan odio ac, rutrum tortor.</p>
                     </div>
                 </div>
-                
+            </div>
             </ConsultantContext.Provider>);
 }

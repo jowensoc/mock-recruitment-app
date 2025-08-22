@@ -18,8 +18,31 @@ export const Gallery = () => {
     }, []);
 
 
-    return (<main className="flex items-center justify-center pb-4">
-                <div>Search</div>
+    return (<main className="grid grid-row p-7">
+                <div>
+                    <h2>Consultants</h2>
+                </div>
+                <div className="bg-gray-100 grid grid-cols-4 rounded-md p-1">
+                    <div>Location <input type="text" className="border-1 bg-white"/></div>
+                    <div>Skills <input type="text" className="border-1 bg-white"/></div>
+                    <div>Availability <select  className="border-1 bg-white">
+                            <option>Any</option>
+                            <option>Available</option>
+                            <option>Pending</option>
+                            <option>Unavailable</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button>Search</button>
+                    </div>
+                </div>
+                <div className="bg-gray-100 grid grid-cols-3 rounded-md p-1">
+                    <p>Display Results: 
+                    <button className="display-results-button">Portrait</button> 
+                    <button className="display-results-button">Details</button>
+                    <button className="display-results-button">Row</button>
+                    </p>
+                </div>
                 { (searchResults) ? 
                     <div>
                         {searchResults.map((consultant) => 
