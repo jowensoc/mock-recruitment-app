@@ -64,14 +64,14 @@ const data = [
     },
     {
         "id": 4,
-        "name": "Elmo",
+        "name": "Sam the Eagle",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "elmo.png"
+        "thumbnail": "sam-the-eagle.png"
     },
     {
         "id": 5,
