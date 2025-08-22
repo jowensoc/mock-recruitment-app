@@ -31,156 +31,156 @@ export const DataService = () => {
 const data = [
     {
         "id": 1,
-        "name": "Kermit",
+        "name": "Sarah",
         "role": "Senior Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "kermit.png"
+        "thumbnail": "001.png"
     },
     {
         "id": 2,
-        "name": "Miss Piggy",
+        "name": "Brian",
         "role": "Senior Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "miss-piggy.png"
+        "thumbnail": "002.png"
     },
     {
         "id": 3,
-        "name": "Gonzo",
+        "name": "Jane",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "gonzo.png"
+        "thumbnail": "003.png"
     },
     {
         "id": 4,
-        "name": "Sam the Eagle",
+        "name": "Samantha",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "sam-the-eagle.png"
+        "thumbnail": "004.png"
     },
     {
         "id": 5,
-        "name": "Animal",
+        "name": "Gary",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "animal.png"
+        "thumbnail": "005.png"
     },
     {
         "id": 6,
-        "name": "Fozzie Bear",
+        "name": "Kirsty",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "fozzie-bear.png"
+        "thumbnail": "006.png"
     },
     {
         "id": 7,
-        "name": "Rowlf the Dog",
+        "name": "Abigail",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "rowlf-the-dog.png"
+        "thumbnail": "007.png"
     },
     {
         "id": 8,
-        "name": "Rizzo the Rat",
+        "name": "David",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "rizzo-the-rat.png"
+        "thumbnail": "008.png"
     },
     {
         "id": 9,
-        "name": "Dr. Bunsen",
+        "name": "Kevin",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "dr-bunsen.png"
+        "thumbnail": "009.png"
     },
     {
         "id": 10,
-        "name": "Beaker",
+        "name": "Chris",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "beaker.png"
+        "thumbnail": "010.png"
     },
     {
         "id": 11,
-        "name": "The Swedish Chef",
+        "name": "Dani",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "the-swedish-chef.png"
+        "thumbnail": "011.png"
     },
     {
         "id": 12,
-        "name": "Statler",
+        "name": "Jacqui",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "statler.png"
+        "thumbnail": "012.png"
     },
     {
         "id": 13,
-        "name": "Waldorf",
+        "name": "Amira",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "waldorf.png"
+        "thumbnail": "013.png"
     },
     {
         "id": 14,
-        "name": "Scooter",
+        "name": "Lexi",
         "role": "Consultant",
         "skills": [
             "Java",
             "React",
             "AWS"
         ],
-        "thumbnail": "scooter.png"
+        "thumbnail": "014.png"
     }
 ];

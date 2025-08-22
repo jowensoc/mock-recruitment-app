@@ -82,6 +82,10 @@ Make sure to deploy the output of `npm run build`
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
+## Profile pictures
+
+Photos of random people were taken from unsplash.com. They were found under the search term "diverse people" to find a good range of people.
+
 ---
 
 Built with ❤️ using React Router.
