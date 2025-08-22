@@ -2,22 +2,24 @@ import { ConsultantContext, useConsultantContext } from "~/shared/context/Consul
 
 export const ConsultantDashboard = () => {
     const { consultant } = useConsultantContext();
+    const thumbnail = "/app/assets/images/" + consultant.thumbnail
 
     return (<ConsultantContext.Provider value={{consultant}}>
                 <div>
-                    <img src="/app/assets/images/generic-user.png" 
+                    <img src={thumbnail}
                     alt={consultant.name}
                     title={consultant.name} 
                     width="50%"/>
                 </div>
                 <div>
                     <h2>{consultant.name}</h2>
+                    <p>Location: { consultant.location}</p>
                 </div>
                 <div>
                     <h3>{consultant.role}</h3>
                 </div>
                 <div>
-                    Skills: { consultant?.skills?.join(", ") }
+                    <p>Skills: { consultant?.skills?.join(", ") }</p>
                 </div>
             </ConsultantContext.Provider>);
 }

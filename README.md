@@ -84,7 +84,7 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 
 ## Profile pictures
 
-Photos of random people were taken from unsplash.com. They were found under the search term "diverse people" to find a good range of people.
+Photos of random people were taken from unsplash.com. The names matched to their profile photos are not real. They were randomly named. We do not know their actual names, nor their background. Their pictures were found under the search term "diverse people" to find a good range of people.
 
 ---
 

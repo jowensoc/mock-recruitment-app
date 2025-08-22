@@ -38,7 +38,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "001.png"
+        "thumbnail": "001.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 2,
@@ -49,7 +51,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "002.png"
+        "thumbnail": "002.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 3,
@@ -60,7 +64,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "003.png"
+        "thumbnail": "003.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 4,
@@ -71,7 +77,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "004.png"
+        "thumbnail": "004.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 5,
@@ -82,7 +90,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "005.png"
+        "thumbnail": "005.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 6,
@@ -93,7 +103,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "006.png"
+        "thumbnail": "006.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 7,
@@ -104,7 +116,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "007.png"
+        "thumbnail": "007.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 8,
@@ -115,7 +129,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "008.png"
+        "thumbnail": "008.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 9,
@@ -126,7 +142,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "009.png"
+        "thumbnail": "009.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 10,
@@ -137,7 +155,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "010.png"
+        "thumbnail": "010.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 11,
@@ -148,7 +168,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "011.png"
+        "thumbnail": "011.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 12,
@@ -159,7 +181,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "012.png"
+        "thumbnail": "012.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 13,
@@ -170,7 +194,9 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "013.png"
+        "thumbnail": "013.png",
+        "location": "Newcastle",
+        "availability": "Available"
     },
     {
         "id": 14,
@@ -181,6 +207,8 @@ const data = [
             "React",
             "AWS"
         ],
-        "thumbnail": "014.png"
+        "thumbnail": "014.png",
+        "location": "Newcastle",
+        "availability": "Available"
     }
 ];
