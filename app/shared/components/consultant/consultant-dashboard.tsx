@@ -21,5 +21,8 @@ export const ConsultantDashboard = () => {
                 <div>
                     <p>Skills: { consultant?.skills?.join(", ") }</p>
                 </div>
+                <div>
+                    <p>Availablity: { consultant?.availability }</p>
+                </div>
             </ConsultantContext.Provider>);
 }

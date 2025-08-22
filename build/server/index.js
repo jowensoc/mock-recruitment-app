@@ -139,6 +139,10 @@ const ConsultantDashboard = () => {
     /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("p", { children: [
       "Skills: ",
       (_a = consultant == null ? void 0 : consultant.skills) == null ? void 0 : _a.join(", ")
+    ] }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("p", { children: [
+      "Availablity: ",
+      consultant == null ? void 0 : consultant.availability
     ] }) })
   ] });
 };
@@ -176,7 +180,7 @@ const data = [
     ],
     "thumbnail": "001.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 2,
@@ -189,7 +193,7 @@ const data = [
     ],
     "thumbnail": "002.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 3,
@@ -202,7 +206,7 @@ const data = [
     ],
     "thumbnail": "003.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 4,
@@ -215,7 +219,7 @@ const data = [
     ],
     "thumbnail": "004.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 5,
@@ -228,7 +232,7 @@ const data = [
     ],
     "thumbnail": "005.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 6,
@@ -241,7 +245,7 @@ const data = [
     ],
     "thumbnail": "006.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 7,
@@ -254,7 +258,7 @@ const data = [
     ],
     "thumbnail": "007.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 8,
@@ -267,7 +271,7 @@ const data = [
     ],
     "thumbnail": "008.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 9,
@@ -280,7 +284,7 @@ const data = [
     ],
     "thumbnail": "009.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 10,
@@ -293,7 +297,7 @@ const data = [
     ],
     "thumbnail": "010.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 11,
@@ -306,7 +310,7 @@ const data = [
     ],
     "thumbnail": "011.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 12,
@@ -319,7 +323,7 @@ const data = [
     ],
     "thumbnail": "012.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 13,
@@ -332,7 +336,7 @@ const data = [
     ],
     "thumbnail": "013.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   },
   {
     "id": 14,
@@ -345,7 +349,7 @@ const data = [
     ],
     "thumbnail": "014.png",
     "location": "Newcastle",
-    "availability": "Available"
+    "availability": "Immediate"
   }
 ];
 const Dashboard = () => {
@@ -407,7 +411,7 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: home,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-ChEgYsfT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-Sc4dxR23.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-Bg6VgfC2.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-3fbc4384.js", "version": "3fbc4384", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-ChEgYsfT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-Sc4dxR23.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-B3kNI22G.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-3d01da49.js", "version": "3d01da49", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };
