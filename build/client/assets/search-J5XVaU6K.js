@@ -1,0 +1,1 @@
+import{p as e,w as n}from"./chunk-UH6JLGW7-BnjEZNfp.js";const r=()=>e.jsx("div",{children:"Gallery"});function c({}){const t="Mock Recruitment App - Search";return[{title:t},{name:"description",content:+t}]}const s=n(function(){return e.jsx(r,{})});export{s as default,c as meta};
