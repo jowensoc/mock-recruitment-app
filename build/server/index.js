@@ -4,7 +4,7 @@ import { createReadableStreamFromReadable } from "@react-router/node";
 import { ServerRouter, UNSAFE_withComponentProps, Outlet, UNSAFE_withErrorBoundaryProps, isRouteErrorResponse, Meta, Links, ScrollRestoration, Scripts } from "react-router";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 const streamTimeout = 5e3;
 function handleRequest(request, responseStatusCode, responseHeaders, routerContext, loadContext) {
   return new Promise((resolve, reject) => {
@@ -104,14 +104,43 @@ const route0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   links
 }, Symbol.toStringTag, { value: "Module" }));
 const ConsultantContext = createContext(void 0);
+function useConsultantContext() {
+  const context = useContext(ConsultantContext);
+  if (!context) {
+    throw new Error("useConsultantContext must be used within a ConsultantContext");
+  }
+  return context;
+}
 const Consultant = ({ children, consultant }) => {
-  return /* @__PURE__ */ jsx(ConsultantContext.Provider, { value: { consultant }, children: /* @__PURE__ */ jsxs("div", { children: [
-    /* @__PURE__ */ jsx("p", { children: consultant.id }),
-    /* @__PURE__ */ jsx("p", { children: consultant.name }),
-    /* @__PURE__ */ jsx("p", { children: consultant.role }),
-    /* @__PURE__ */ jsx("p", { children: consultant.skills }),
-    /* @__PURE__ */ jsx("div", { children })
-  ] }) });
+  return /* @__PURE__ */ jsx(ConsultantContext.Provider, { value: { consultant }, children: /* @__PURE__ */ jsx("div", { children }) });
+};
+const ConsultantDashboard = () => {
+  var _a;
+  const { consultant } = useConsultantContext();
+  const thumbnail = "/app/assets/images/" + consultant.thumbnail;
+  return /* @__PURE__ */ jsxs(ConsultantContext.Provider, { value: { consultant }, children: [
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx(
+      "img",
+      {
+        src: thumbnail,
+        alt: consultant.name,
+        title: consultant.name,
+        width: "50%"
+      }
+    ) }),
+    /* @__PURE__ */ jsxs("div", { children: [
+      /* @__PURE__ */ jsx("h2", { children: consultant.name }),
+      /* @__PURE__ */ jsxs("p", { children: [
+        "Location: ",
+        consultant.location
+      ] })
+    ] }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h3", { children: consultant.role }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("p", { children: [
+      "Skills: ",
+      (_a = consultant == null ? void 0 : consultant.skills) == null ? void 0 : _a.join(", ")
+    ] }) })
+  ] });
 };
 const DataService = () => {
   const getAllConsultants = () => {
@@ -138,157 +167,185 @@ const DataService = () => {
 const data = [
   {
     "id": 1,
-    "name": "Kermit",
+    "name": "Sarah",
     "role": "Senior Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "kermit.png"
+    "thumbnail": "001.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 2,
-    "name": "Miss Piggy",
+    "name": "Brian",
     "role": "Senior Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "miss-piggy.png"
+    "thumbnail": "002.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 3,
-    "name": "Gonzo",
+    "name": "Jane",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "gonzo.png"
+    "thumbnail": "003.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 4,
-    "name": "Elmo",
+    "name": "Samantha",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "elmo.png"
+    "thumbnail": "004.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 5,
-    "name": "Animal",
+    "name": "Gary",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "animal.png"
+    "thumbnail": "005.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 6,
-    "name": "Fozzie Bear",
+    "name": "Kirsty",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "fozzie-bear.png"
+    "thumbnail": "006.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 7,
-    "name": "Rowlf the Dog",
+    "name": "Abigail",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "rowlf-the-dog.png"
+    "thumbnail": "007.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 8,
-    "name": "Rizzo the Rat",
+    "name": "David",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "rizzo-the-rat.png"
+    "thumbnail": "008.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 9,
-    "name": "Dr. Bunsen",
+    "name": "Kevin",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "dr-bunsen.png"
+    "thumbnail": "009.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 10,
-    "name": "Beaker",
+    "name": "Chris",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "beaker.png"
+    "thumbnail": "010.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 11,
-    "name": "The Swedish Chef",
+    "name": "Dani",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "the-swedish-chef.png"
+    "thumbnail": "011.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 12,
-    "name": "Statler",
+    "name": "Jacqui",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "statler.png"
+    "thumbnail": "012.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 13,
-    "name": "Waldorf",
+    "name": "Amira",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "waldorf.png"
+    "thumbnail": "013.png",
+    "location": "Newcastle",
+    "availability": "Available"
   },
   {
     "id": 14,
-    "name": "Scooter",
+    "name": "Lexi",
     "role": "Consultant",
     "skills": [
       "Java",
       "React",
       "AWS"
     ],
-    "thumbnail": "scooter.png"
+    "thumbnail": "014.png",
+    "location": "Newcastle",
+    "availability": "Available"
   }
 ];
 const Dashboard = () => {
@@ -310,13 +367,26 @@ const Dashboard = () => {
   return /* @__PURE__ */ jsxs("main", { className: "flex items-center justify-center pt-16 pb-4", children: [
     /* @__PURE__ */ jsx("div", { children: "Dashboard" }),
     consultant ? /* @__PURE__ */ jsxs("div", { children: [
-      /* @__PURE__ */ jsx(Consultant, { consultant: {
-        id: consultant.id,
-        name: consultant.name,
-        role: consultant.role,
-        skills: consultant.skills
-      } }),
-      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("button", { onClick: () => handleClick(), children: "Next" }) })
+      /* @__PURE__ */ jsx(
+        Consultant,
+        {
+          consultant: {
+            id: consultant.id,
+            name: consultant.name,
+            role: consultant.role,
+            skills: consultant.skills,
+            thumbnail: consultant.thumbnail,
+            location: consultant.location,
+            availability: consultant.availability
+          },
+          children: /* @__PURE__ */ jsx(ConsultantDashboard, {})
+        },
+        consultant.id
+      ),
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("button", { onClick: () => handleClick(), children: "No" }),
+        /* @__PURE__ */ jsx("button", { onClick: () => handleClick(), children: "Yes" })
+      ] })
     ] }) : /* @__PURE__ */ jsx("p", { children: "No Consultant details" })
   ] });
 };
@@ -337,7 +407,7 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: home,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-ChEgYsfT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-Sc4dxR23.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-BdkNQNiu.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-2697c9b8.js", "version": "2697c9b8", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-ChEgYsfT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-Sc4dxR23.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-Bg6VgfC2.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-3fbc4384.js", "version": "3fbc4384", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };
