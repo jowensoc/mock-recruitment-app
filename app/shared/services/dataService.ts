@@ -40,7 +40,7 @@ const data = [
         ],
         "thumbnail": "001.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 2,
@@ -53,7 +53,7 @@ const data = [
         ],
         "thumbnail": "002.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 3,
@@ -66,7 +66,7 @@ const data = [
         ],
         "thumbnail": "003.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 4,
@@ -79,7 +79,7 @@ const data = [
         ],
         "thumbnail": "004.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 5,
@@ -92,7 +92,7 @@ const data = [
         ],
         "thumbnail": "005.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 6,
@@ -105,7 +105,7 @@ const data = [
         ],
         "thumbnail": "006.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 7,
@@ -118,7 +118,7 @@ const data = [
         ],
         "thumbnail": "007.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 8,
@@ -131,7 +131,7 @@ const data = [
         ],
         "thumbnail": "008.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 9,
@@ -144,7 +144,7 @@ const data = [
         ],
         "thumbnail": "009.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 10,
@@ -157,7 +157,7 @@ const data = [
         ],
         "thumbnail": "010.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 11,
@@ -170,7 +170,7 @@ const data = [
         ],
         "thumbnail": "011.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 12,
@@ -183,7 +183,7 @@ const data = [
         ],
         "thumbnail": "012.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 13,
@@ -196,7 +196,7 @@ const data = [
         ],
         "thumbnail": "013.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     },
     {
         "id": 14,
@@ -209,6 +209,6 @@ const data = [
         ],
         "thumbnail": "014.png",
         "location": "Newcastle",
-        "availability": "Available"
+        "availability": "Immediate"
     }
 ];
