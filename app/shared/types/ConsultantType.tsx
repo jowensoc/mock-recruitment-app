@@ -5,5 +5,5 @@ export type ConsultantType = {
     skills?: [string],
     thumbnail?: string,
     location?:string,
-    availabilityStatus?:string
+    availability?:string
 }

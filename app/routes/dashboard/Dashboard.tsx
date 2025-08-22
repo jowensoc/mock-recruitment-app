@@ -32,8 +32,9 @@ export const Dashboard = () => {
                             name:consultant.name, 
                             role:consultant.role, 
                             skills:consultant.skills,
-                            location: "England",
-                            availabilityStatus: "Available"}}>
+                            thumbnail:consultant.thumbnail,
+                            location: consultant.location,
+                            availability: consultant.availability}}>
                     <ConsultantDashboard/>
                 </Consultant>
                 <div>
