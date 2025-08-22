@@ -146,6 +146,41 @@ const ConsultantDashboard = () => {
     ] }) })
   ] });
 };
+const ConsultantRowDetails = () => {
+  var _a;
+  const { consultant } = useConsultantContext();
+  const thumbnail = "/app/assets/images/" + consultant.thumbnail;
+  return /* @__PURE__ */ jsxs(ConsultantContext.Provider, { value: { consultant }, children: [
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx(
+      "img",
+      {
+        src: thumbnail,
+        alt: consultant.name,
+        title: consultant.name,
+        width: "150px"
+      }
+    ) }),
+    /* @__PURE__ */ jsxs("div", { children: [
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("h2", { children: consultant.name }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Location: ",
+          consultant.location
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h3", { children: consultant.role }) }),
+      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("p", { children: [
+        "Skills: ",
+        (_a = consultant == null ? void 0 : consultant.skills) == null ? void 0 : _a.join(", ")
+      ] }) }),
+      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("p", { children: [
+        "Availablity: ",
+        consultant == null ? void 0 : consultant.availability
+      ] }) }),
+      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: " Experience: Vivamus at accumsan ligula. Donec tempus sagittis risus quis elementum. Praesent facilisis elementum ipsum a accumsan. Etiam mi justo, iaculis tempus eros lobortis, tempus varius ante. Phasellus risus lorem, tincidunt non justo eu, ultricies accumsan est. Pellentesque vehicula a lorem vel varius. Curabitur non dolor condimentum, accumsan odio ac, rutrum tortor." }) })
+    ] })
+  ] });
+};
 const DataService = () => {
   const getAllConsultants = () => {
     return data;
@@ -412,7 +447,35 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   meta: meta$1
 }, Symbol.toStringTag, { value: "Module" }));
 const Gallery = () => {
-  return /* @__PURE__ */ jsx("div", { children: "Gallery" });
+  const [searchResults, setSearchResults] = useState();
+  const searchConsultants = () => {
+    const data2 = DataService().getAllConsultants();
+    if (data2) {
+      setSearchResults(data2);
+    }
+  };
+  useEffect(() => {
+    searchConsultants();
+  }, []);
+  return /* @__PURE__ */ jsxs("main", { className: "flex items-center justify-center pb-4", children: [
+    /* @__PURE__ */ jsx("div", { children: "Search" }),
+    searchResults ? /* @__PURE__ */ jsx("div", { children: searchResults.map((consultant) => /* @__PURE__ */ jsx(
+      Consultant,
+      {
+        consultant: {
+          id: consultant.id,
+          name: consultant.name,
+          role: consultant.role,
+          skills: consultant.skills,
+          thumbnail: consultant.thumbnail,
+          location: consultant.location,
+          availability: consultant.availability
+        },
+        children: /* @__PURE__ */ jsx(ConsultantRowDetails, {})
+      },
+      consultant.id
+    )) }) : "<p>No search results available</p>"
+  ] });
 };
 function meta({}) {
   const title = "Mock Recruitment App - Search";
@@ -431,7 +494,7 @@ const route2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: search,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-ChEgYsfT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-Sc4dxR23.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-B3kNI22G.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": "search", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-J5XVaU6K.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-e50584f9.js", "version": "e50584f9", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-ChEgYsfT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-Sc4dxR23.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-HqGP1pPy.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js", "/assets/dataService-RyZOa01G.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": "search", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-DghI_KTa.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js", "/assets/dataService-RyZOa01G.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-5e7aa85e.js", "version": "5e7aa85e", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };
