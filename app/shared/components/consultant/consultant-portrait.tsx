@@ -10,7 +10,7 @@ export const ConsultantPortrait = () => {
                     <img src={thumbnail}
                     alt={consultant.name}
                     title={consultant.name} 
-                    className="h-48 w-96 object-contain"/>
+                    className="h-46 object-center border-3 border-blue-600 rounded-md m-auto"/>
                 </div>
                 <div className="text-center">
                     <h2>{consultant.name}</h2>

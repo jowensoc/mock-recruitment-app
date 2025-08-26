@@ -6,15 +6,15 @@ export const ConsultantRowDetails = () => {
     const thumbnail = "/app/assets/images/" + consultant.thumbnail
 
     return (<ConsultantContext.Provider value={{consultant}}>
-            <div className="bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-3 gap-4">
+            <div className="bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-5 gap-4">
                 <div>
                     <img src={thumbnail}
                     alt={consultant.name}
                     title={consultant.name} 
-                    className="h-28 object-contain border-3 border-blue-600 rounded-md"
+                    className="h-28 object-contain border-3 border-blue-600 rounded-md m-auto"
                     />
                 </div>
-                <div className="col-span-2">
+                <div className="col-span-3">
                     <div>
                         <h2>{consultant.name}</h2>
                         <p>Location: { consultant.location}</p>
