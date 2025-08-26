@@ -135,7 +135,7 @@ const getAvailabilityClass = (val) => {
   }
   return results;
 };
-const ConsultantDashboard = () => {
+const ConsultantPortrait = () => {
   var _a;
   const { consultant } = useConsultantContext();
   const thumbnail = "/app/assets/images/" + consultant.thumbnail;
@@ -445,7 +445,7 @@ const Dashboard = () => {
             location: consultant.location,
             availability: consultant.availability
           },
-          children: /* @__PURE__ */ jsx(ConsultantDashboard, {})
+          children: /* @__PURE__ */ jsx(ConsultantPortrait, {})
         },
         consultant.id
       ),

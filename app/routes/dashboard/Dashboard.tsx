@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { Consultant, ConsultantDashboard } from "~/shared/components/consultant/consultant-component";
+import { Consultant, ConsultantPortrait } from "~/shared/components/consultant/consultant-component";
 import { DataService } from "~/shared/services/dataService";
 
 export const Dashboard = () => {
@@ -35,7 +35,7 @@ export const Dashboard = () => {
                             thumbnail:consultant.thumbnail,
                             location: consultant.location,
                             availability: consultant.availability}}>
-                    <ConsultantDashboard/>
+                    <ConsultantPortrait/>
                 </Consultant>
                 <div className="grid grid-cols-2 gap-10 pt-5">
                     <div className="place-self-end bg-blue-300">

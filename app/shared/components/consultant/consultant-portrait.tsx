@@ -1,7 +1,7 @@
 import { ConsultantContext, useConsultantContext } from "~/shared/context/ConsultantContextType";
 import { getAvailabilityClass } from "~/shared/utils/helpers";
 
-export const ConsultantDashboard = () => {
+export const ConsultantPortrait = () => {
     const { consultant } = useConsultantContext();
     const thumbnail = "/app/assets/images/" + consultant.thumbnail
 
