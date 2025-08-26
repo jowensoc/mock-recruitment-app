@@ -21,10 +21,37 @@ export const DataService = () => {
         return results;
     }
 
+    const hasSkills = (array1:string[], array2:string[]) => {
+        return array2.every((item) => array1.includes(item))
+    }
+
+    const searchConsultants = (name?: string, location?: string, skills?: string, availability?: string) => {
+        let searchResults = data;
+
+        const locationList = (location) ? location.toLowerCase().split(", ") : [];
+        const skillsList = (skills) ? skills.toLowerCase().split(", ") : [];
+
+        if (locationList.length > 0) {
+            searchResults = searchResults.filter((item) => locationList.includes(item.location.toLowerCase()));
+        }
+
+        // if (skillsList.length > 0) {
+        //     searchResults = searchResults.filter((item) => item.skills));
+        // }
+
+        if (availability && availability.trim().toLowerCase() !== "any") {
+            searchResults = searchResults.filter((item) => 
+                item.availability.trim().toLowerCase() === availability.trim().toLowerCase());
+        }
+        
+        return searchResults;
+    }
+
     return {
         getAllConsultants,
         getConsultantByID,
-        getNextConsultant
+        getNextConsultant,
+        searchConsultants
     }
 }
 
@@ -65,7 +92,7 @@ const data = [
             "AWS"
         ],
         "thumbnail": "003.png",
-        "location": "Newcastle",
+        "location": "Bristol",
         "availability": "Unavailable"
     },
     {
@@ -78,7 +105,7 @@ const data = [
             "AWS"
         ],
         "thumbnail": "004.png",
-        "location": "Newcastle",
+        "location": "Glasgow",
         "availability": "Immediate"
     },
     {
@@ -91,7 +118,7 @@ const data = [
             "AWS"
         ],
         "thumbnail": "005.png",
-        "location": "Newcastle",
+        "location": "Edinburgh",
         "availability": "Immediate"
     },
     {
@@ -117,7 +144,7 @@ const data = [
             "AWS"
         ],
         "thumbnail": "007.png",
-        "location": "Newcastle",
+        "location": "London",
         "availability": "Immediate"
     },
     {
@@ -130,7 +157,7 @@ const data = [
             "AWS"
         ],
         "thumbnail": "008.png",
-        "location": "Newcastle",
+        "location": "Birmingham",
         "availability": "Unavailable"
     },
     {
@@ -143,7 +170,7 @@ const data = [
             "AWS"
         ],
         "thumbnail": "009.png",
-        "location": "Newcastle",
+        "location": "London",
         "availability": "Immediate"
     },
     {
@@ -195,7 +222,7 @@ const data = [
             "AWS"
         ],
         "thumbnail": "013.png",
-        "location": "Newcastle",
+        "location": "London",
         "availability": "Immediate"
     },
     {
