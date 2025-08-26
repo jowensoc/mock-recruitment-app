@@ -39,10 +39,10 @@ export const Dashboard = () => {
                 </Consultant>
                 <div className="grid grid-cols-2 gap-10 pt-5">
                     <div className="place-self-end bg-blue-300">
-                        <button className="bg-red-500 p-2 rounded-md" onClick={() => handleClick()}>No</button>
+                        <button className="bg-red-500 p-2 rounded-m w-20 text-white cursor-pointer" onClick={() => handleClick()}>No</button>
                     </div>
                     <div className="place-self-start bg-blue-300">
-                        <button className="bg-green-500 p-2 rounded-md" onClick={() => handleClick()}>Yes</button>
+                        <button className="bg-green-500 p-2 rounded-md w-20 text-white cursor-pointer" onClick={() => handleClick()}>Yes</button>
                     </div>
                 </div>
             </div>

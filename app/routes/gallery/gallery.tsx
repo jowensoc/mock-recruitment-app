@@ -33,7 +33,7 @@ export const Gallery = () => {
                         </select>
                     </div>
                     <div>
-                        <button>Search</button>
+                        <button className="bg-gray-500 p-2 rounded-m w-20 text-white cursor-pointer">Search</button>
                     </div>
                 </div>
                 <div className="bg-gray-100 grid grid-cols-3 rounded-md p-1">

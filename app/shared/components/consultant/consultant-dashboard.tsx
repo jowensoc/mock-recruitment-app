@@ -17,7 +17,7 @@ export const ConsultantDashboard = () => {
                     <p>Location: { consultant.location}</p>
                 </div>
                 <div className="text-center">
-                    <h3>{consultant.role}</h3>
+                    <p>Role: {consultant.role}</p>
                 </div>
                 <div className="text-center">
                     <p>Skills: { consultant?.skills?.join(", ") }</p>

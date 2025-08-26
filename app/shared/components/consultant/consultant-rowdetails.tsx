@@ -6,7 +6,7 @@ export const ConsultantRowDetails = () => {
     const thumbnail = "/app/assets/images/" + consultant.thumbnail
 
     return (<ConsultantContext.Provider value={{consultant}}>
-            <div className="bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-2">
+            <div className="bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-3 gap-4">
                 <div>
                     <img src={thumbnail}
                     alt={consultant.name}
@@ -14,19 +14,19 @@ export const ConsultantRowDetails = () => {
                     className="h-28 object-contain border-3 border-blue-600 rounded-md"
                     />
                 </div>
-                <div>
+                <div className="col-span-2">
                     <div>
                         <h2>{consultant.name}</h2>
                         <p>Location: { consultant.location}</p>
                     </div>
                     <div>
-                        <h3>{consultant.role}</h3>
+                        <p>Role: {consultant.role}</p>
                     </div>
                     <div>
                         <p>Skills: { consultant?.skills?.join(", ") }</p>
                     </div>
                     <div>
-                       <p>Availablity: <span className={getAvailabilityClass(consultant?.availability)}>{ consultant?.availability }</span></p>
+                        <p>Availablity: <span className={getAvailabilityClass(consultant?.availability)}>{ consultant?.availability }</span></p>
                     </div>
                     <div>
                         <p> Experience: Vivamus at accumsan ligula. 
