@@ -1,9 +1,11 @@
 import { useState, useEffect} from "react";
-import { Consultant, ConsultantPortrait, ConsultantRowDetails } from "~/shared/components/consultant/consultant-component";
+import { Consultant, ConsultantPortrait, ConsultantRow, ConsultantRowDetails, ConsultantRowHeaders } from "~/shared/components/consultant/consultant-component";
 import { DataService } from "~/shared/services/dataService";
 
 export const Gallery = () => {
     const [searchResults, setSearchResults] = useState<any[]>();
+    const [displayResults, setDisplayResults] = useState("portrait");
+    const [rowHeaderStyles, setRowHeadersStyles] = useState("");
 
     const searchConsultants = () => {
         const data = DataService().getAllConsultants();
@@ -11,6 +13,30 @@ export const Gallery = () => {
         if (data) {
             setSearchResults(data);
         }
+    }
+
+    const renderSearchResults = (displayResults: string) => {
+        setDisplayResults(displayResults);
+
+        let tempStyles = "";
+
+        switch (displayResults) {
+            case "portrait":
+                tempStyles = "grid grid-cols-5 gap-5";
+                break;
+            case "row-details":
+                tempStyles = "grid grid-cols-5";
+                break;
+            case "row":
+                tempStyles = "";
+                break;
+            default:
+                tempStyles = "";
+                break;
+        }
+
+        setRowHeadersStyles(tempStyles);
+
     }
 
     useEffect(() => {
@@ -38,13 +64,20 @@ export const Gallery = () => {
                 </div>
                 <div className="bg-gray-100 rounded-md p-1">
                     <p>Display Results: 
-                    <button className="display-results-button">Portrait</button> 
-                    <button className="display-results-button">Details</button>
-                    <button className="display-results-button">Row</button>
+                    <button className="display-results-button" 
+                            onClick={() => renderSearchResults("portrait")}>Portrait</button> 
+                    <button className="display-results-button"
+                            onClick={() => renderSearchResults("row")}>Row</button>
+                    <button className="display-results-button" 
+                            onClick={() => renderSearchResults("details")}>Details</button>
+                    
                     </p>
                 </div>
                 { (searchResults) ? 
-                    <div>
+                    <div className={rowHeaderStyles}>
+                        { (displayResults === "row") ? 
+                            <ConsultantRowHeaders/>
+                            : <></>}
                         {searchResults.map((consultant) => 
                             <Consultant key={consultant.id} 
                                 consultant={{id:consultant.id, 
@@ -54,7 +87,18 @@ export const Gallery = () => {
                                 thumbnail:consultant.thumbnail,
                                 location: consultant.location,
                                 availability: consultant.availability}}>
+
+                                { (displayResults === "portrait") ? 
+                                    <div><ConsultantPortrait/></div>
+                                : <></>}
+
+                                { (displayResults === "details") ? 
                                     <ConsultantRowDetails/>
+                                : <></>}
+
+                                { (displayResults === "row") ? 
+                                    <ConsultantRow/>
+                                : <></>}
                             </Consultant>)}
                     </div>
                     : 
