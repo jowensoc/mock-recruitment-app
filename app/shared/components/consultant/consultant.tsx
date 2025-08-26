@@ -10,8 +10,6 @@ export const Consultant: React.FC<ConsultantProps> = ({children, consultant}) =>
 
     return (
         <ConsultantContext.Provider value={{consultant}}>
-        <div>
             { children }
-        </div>
         </ConsultantContext.Provider>);
 }

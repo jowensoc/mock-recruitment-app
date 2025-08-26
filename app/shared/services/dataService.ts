@@ -53,7 +53,7 @@ const data = [
         ],
         "thumbnail": "002.png",
         "location": "Newcastle",
-        "availability": "Immediate"
+        "availability": "Pending"
     },
     {
         "id": 3,
@@ -66,7 +66,7 @@ const data = [
         ],
         "thumbnail": "003.png",
         "location": "Newcastle",
-        "availability": "Immediate"
+        "availability": "Unavailable"
     },
     {
         "id": 4,
@@ -105,7 +105,7 @@ const data = [
         ],
         "thumbnail": "006.png",
         "location": "Newcastle",
-        "availability": "Immediate"
+        "availability": "Pending"
     },
     {
         "id": 7,
@@ -131,7 +131,7 @@ const data = [
         ],
         "thumbnail": "008.png",
         "location": "Newcastle",
-        "availability": "Immediate"
+        "availability": "Unavailable"
     },
     {
         "id": 9,

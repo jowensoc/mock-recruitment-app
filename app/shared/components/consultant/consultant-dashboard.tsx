@@ -1,4 +1,5 @@
 import { ConsultantContext, useConsultantContext } from "~/shared/context/ConsultantContextType";
+import { getAvailabilityClass } from "~/shared/utils/helpers";
 
 export const ConsultantDashboard = () => {
     const { consultant } = useConsultantContext();
@@ -9,20 +10,20 @@ export const ConsultantDashboard = () => {
                     <img src={thumbnail}
                     alt={consultant.name}
                     title={consultant.name} 
-                    width="50%"/>
+                    className="h-48 w-96 object-contain"/>
                 </div>
-                <div>
+                <div className="text-center">
                     <h2>{consultant.name}</h2>
                     <p>Location: { consultant.location}</p>
                 </div>
-                <div>
-                    <h3>{consultant.role}</h3>
+                <div className="text-center">
+                    <p>Role: {consultant.role}</p>
                 </div>
-                <div>
+                <div className="text-center">
                     <p>Skills: { consultant?.skills?.join(", ") }</p>
                 </div>
-                <div>
-                    <p>Availablity: { consultant?.availability }</p>
+                <div className="text-center">
+                    <p>Availablity: <span className={getAvailabilityClass(consultant?.availability)}>{ consultant?.availability }</span></p>
                 </div>
             </ConsultantContext.Provider>);
 }
