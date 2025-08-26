@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { Consultant, ConsultantDashboard, ConsultantRowDetails } from "~/shared/components/consultant/consultant-component";
+import { Consultant, ConsultantPortrait, ConsultantRowDetails } from "~/shared/components/consultant/consultant-component";
 import { DataService } from "~/shared/services/dataService";
 
 export const Gallery = () => {
@@ -36,7 +36,7 @@ export const Gallery = () => {
                         <button className="bg-gray-500 p-2 rounded-m w-20 text-white cursor-pointer">Search</button>
                     </div>
                 </div>
-                <div className="bg-gray-100 grid grid-cols-3 rounded-md p-1">
+                <div className="bg-gray-100 rounded-md p-1">
                     <p>Display Results: 
                     <button className="display-results-button">Portrait</button> 
                     <button className="display-results-button">Details</button>
@@ -58,6 +58,6 @@ export const Gallery = () => {
                             </Consultant>)}
                     </div>
                     : 
-                    "<p>No search results available</p>"}
+                    <p>No search results available</p>}
             </main>);
 }

@@ -1,9 +1,9 @@
 import { Consultant } from "./consultant";
-import { ConsultantDashboard } from "./consultant-dashboard";
+import { ConsultantPortrait } from "./consultant-portrait";
 import { ConsultantRowDetails } from "./consultant-rowdetails";
 
 export {
     Consultant,
-    ConsultantDashboard,
+    ConsultantPortrait,
     ConsultantRowDetails
 }
