@@ -1,4 +1,4 @@
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 import { PassThrough } from "node:stream";
 import { createReadableStreamFromReadable } from "@react-router/node";
 import { ServerRouter, UNSAFE_withComponentProps, Outlet, UNSAFE_withErrorBoundaryProps, isRouteErrorResponse, Meta, Links, ScrollRestoration, Scripts } from "react-router";
@@ -146,7 +146,7 @@ const ConsultantPortrait = () => {
         src: thumbnail,
         alt: consultant.name,
         title: consultant.name,
-        className: "h-48 w-96 object-contain"
+        className: "h-46 object-center border-3 border-blue-600 rounded-md m-auto"
       }
     ) }),
     /* @__PURE__ */ jsxs("div", { className: "text-center", children: [
@@ -174,17 +174,17 @@ const ConsultantRowDetails = () => {
   var _a;
   const { consultant } = useConsultantContext();
   const thumbnail = "/app/assets/images/" + consultant.thumbnail;
-  return /* @__PURE__ */ jsx(ConsultantContext.Provider, { value: { consultant }, children: /* @__PURE__ */ jsxs("div", { className: "bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-3 gap-4", children: [
+  return /* @__PURE__ */ jsx(ConsultantContext.Provider, { value: { consultant }, children: /* @__PURE__ */ jsxs("div", { className: "bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-5 gap-4", children: [
     /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx(
       "img",
       {
         src: thumbnail,
         alt: consultant.name,
         title: consultant.name,
-        className: "h-28 object-contain border-3 border-blue-600 rounded-md"
+        className: "h-28 object-contain border-3 border-blue-600 rounded-md m-auto"
       }
     ) }),
-    /* @__PURE__ */ jsxs("div", { className: "col-span-2", children: [
+    /* @__PURE__ */ jsxs("div", { className: "col-span-3", children: [
       /* @__PURE__ */ jsxs("div", { children: [
         /* @__PURE__ */ jsx("h2", { children: consultant.name }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -208,6 +208,27 @@ const ConsultantRowDetails = () => {
     ] })
   ] }) });
 };
+const ConsultantRow = () => {
+  var _a;
+  const { consultant } = useConsultantContext();
+  "/app/assets/images/" + consultant.thumbnail;
+  return /* @__PURE__ */ jsx(ConsultantContext.Provider, { value: { consultant }, children: /* @__PURE__ */ jsxs("div", { className: "bg-gray-200 p-3 rounded-md mb-1 grid grid-cols-5 gap-2", children: [
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: consultant.name }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: consultant.location }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: consultant.role }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: (_a = consultant == null ? void 0 : consultant.skills) == null ? void 0 : _a.join(", ") }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("span", { className: getAvailabilityClass(consultant == null ? void 0 : consultant.availability), children: consultant == null ? void 0 : consultant.availability }) }) })
+  ] }) });
+};
+const ConsultantRowHeaders = () => {
+  return /* @__PURE__ */ jsxs("div", { className: "bg-gray-300 p-3 rounded-md mb-1 grid grid-cols-5 gap-2", children: [
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h1", { children: "Name" }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h1", { children: "Location" }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h1", { children: "Role" }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h1", { children: "Skills" }) }),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h1", { children: "Availability" }) })
+  ] });
+};
 const DataService = () => {
   const getAllConsultants = () => {
     return data;
@@ -224,10 +245,34 @@ const DataService = () => {
     }
     return results;
   };
+  const searchConsultants = (name, location, skills, availability) => {
+    let searchResults = data;
+    const locationList = location ? location.toLowerCase().split(", ") : [];
+    const skillsList = skills ? skills.toLowerCase().split(", ") : [];
+    if (locationList.length > 0) {
+      searchResults = searchResults.filter((item) => locationList.includes(item.location.toLowerCase()));
+    }
+    if (skillsList.length > 0) {
+      searchResults = searchResults.filter((item) => item.skills.some((item2) => skillsList.includes(item2.toLowerCase().trim())));
+    }
+    if (availability && availability.trim().toLowerCase() !== "any") {
+      searchResults = searchResults.filter((item) => item.availability.trim().toLowerCase() === availability.trim().toLowerCase());
+    }
+    return searchResults;
+  };
+  const searchConsultantsSkills = (skills) => {
+    const skillsList = skills ? skills.toLowerCase().split(", ") : [];
+    const results1 = data.filter((item) => item.skills.some((item2) => skillsList.includes(item2.toLowerCase().trim())));
+    return {
+      "results1": results1
+    };
+  };
   return {
     getAllConsultants,
     getConsultantByID,
-    getNextConsultant
+    getNextConsultant,
+    searchConsultants,
+    searchConsultantsSkills
   };
 };
 const data = [
@@ -237,8 +282,8 @@ const data = [
     "role": "Senior Consultant",
     "skills": [
       "Java",
-      "React",
-      "AWS"
+      "Play Framework",
+      "React"
     ],
     "thumbnail": "001.png",
     "location": "Newcastle",
@@ -249,7 +294,7 @@ const data = [
     "name": "Brian",
     "role": "Senior Consultant",
     "skills": [
-      "Java",
+      "CSharp",
       "React",
       "AWS"
     ],
@@ -262,12 +307,13 @@ const data = [
     "name": "Jane",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "ExpressJS",
+      "HTML",
+      "CSS",
+      "Azure"
     ],
     "thumbnail": "003.png",
-    "location": "Newcastle",
+    "location": "Bristol",
     "availability": "Unavailable"
   },
   {
@@ -280,7 +326,7 @@ const data = [
       "AWS"
     ],
     "thumbnail": "004.png",
-    "location": "Newcastle",
+    "location": "Glasgow",
     "availability": "Immediate"
   },
   {
@@ -293,7 +339,7 @@ const data = [
       "AWS"
     ],
     "thumbnail": "005.png",
-    "location": "Newcastle",
+    "location": "Edinburgh",
     "availability": "Immediate"
   },
   {
@@ -301,9 +347,9 @@ const data = [
     "name": "Kirsty",
     "role": "Consultant",
     "skills": [
-      "Java",
+      "Python",
       "React",
-      "AWS"
+      "PHP"
     ],
     "thumbnail": "006.png",
     "location": "Newcastle",
@@ -314,12 +360,14 @@ const data = [
     "name": "Abigail",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "Cloudfront",
+      "Azure",
+      "AWS",
+      "DevOps",
+      "Octopus"
     ],
     "thumbnail": "007.png",
-    "location": "Newcastle",
+    "location": "London",
     "availability": "Immediate"
   },
   {
@@ -327,12 +375,12 @@ const data = [
     "name": "David",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "Rust",
+      "CPlusPlus",
+      "SQL"
     ],
     "thumbnail": "008.png",
-    "location": "Newcastle",
+    "location": "Birmingham",
     "availability": "Unavailable"
   },
   {
@@ -340,12 +388,12 @@ const data = [
     "name": "Kevin",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "Swift",
+      "React Native",
+      "Go"
     ],
     "thumbnail": "009.png",
-    "location": "Newcastle",
+    "location": "London",
     "availability": "Immediate"
   },
   {
@@ -353,9 +401,9 @@ const data = [
     "name": "Chris",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "Ruby",
+      "Javascript",
+      "ASP.net"
     ],
     "thumbnail": "010.png",
     "location": "Newcastle",
@@ -366,9 +414,9 @@ const data = [
     "name": "Dani",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "Visual Basic",
+      "CSharp",
+      "Apache Server"
     ],
     "thumbnail": "011.png",
     "location": "Newcastle",
@@ -379,9 +427,10 @@ const data = [
     "name": "Jacqui",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "Java Applets",
+      "Java Beans",
+      "EmberJS",
+      "Google Cloud Platform"
     ],
     "thumbnail": "012.png",
     "location": "Newcastle",
@@ -393,11 +442,12 @@ const data = [
     "role": "Consultant",
     "skills": [
       "Java",
-      "React",
-      "AWS"
+      "Mocha",
+      "Cypress",
+      "Junit"
     ],
     "thumbnail": "013.png",
-    "location": "Newcastle",
+    "location": "London",
     "availability": "Immediate"
   },
   {
@@ -405,35 +455,167 @@ const data = [
     "name": "Lexi",
     "role": "Consultant",
     "skills": [
-      "Java",
-      "React",
-      "AWS"
+      "Kotlin",
+      "Pearl",
+      "GoLang"
     ],
     "thumbnail": "014.png",
     "location": "Newcastle",
     "availability": "Immediate"
   }
 ];
-const Dashboard = () => {
-  const [consultantID, setConsultantID] = useState(0);
-  const [consultant, setConsultant] = useState();
-  const getNextConsultant = () => {
-    const data2 = DataService().getNextConsultant(consultantID);
+const Gallery = () => {
+  const [searchResults, setSearchResults] = useState();
+  const [displayResults, setDisplayResults] = useState("portrait");
+  const [rowHeaderStyles, setRowHeadersStyles] = useState("grid grid-cols-5 gap-5");
+  const [searchLocation, setSearchLocation] = useState("");
+  const [searchSkills, setSearchSkills] = useState("");
+  const [searchAvailabilty, setSearchAvailabilty] = useState("Any");
+  const searchConsultants = () => {
+    const data2 = DataService().searchConsultants("", searchLocation, searchSkills, searchAvailabilty);
     if (data2) {
-      setConsultantID(data2.id);
-      setConsultant(data2);
+      setSearchResults(data2);
     }
   };
-  useEffect(() => {
-    getNextConsultant();
-  }, []);
-  const handleClick = () => {
-    getNextConsultant();
+  const renderSearchResults = (displayResults2) => {
+    setDisplayResults(displayResults2);
+    let tempStyles = "";
+    switch (displayResults2) {
+      case "portrait":
+        tempStyles = "grid grid-cols-5 gap-5";
+        break;
+      case "row-details":
+        tempStyles = "grid grid-cols-5";
+        break;
+      case "row":
+        tempStyles = "";
+        break;
+      default:
+        tempStyles = "";
+        break;
+    }
+    setRowHeadersStyles(tempStyles);
   };
-  return /* @__PURE__ */ jsxs("main", { className: "flex items-center justify-center pt-16 pb-4", children: [
-    /* @__PURE__ */ jsx("div", { className: "size-40 self-start pl-5", children: /* @__PURE__ */ jsx("h2", { children: "recruit your team" }) }),
-    consultant ? /* @__PURE__ */ jsxs("div", { className: "bg-gray-100 rounded-md p-3", children: [
+  const handleSearchLocation = (e) => {
+    setSearchLocation(e.target.value);
+  };
+  const handleSearchSkills = (e) => {
+    setSearchSkills(e.target.value);
+  };
+  const handleSearchAvailability = (e) => {
+    setSearchAvailabilty(e.target.value);
+  };
+  const handleReset = (e) => {
+    setSearchLocation("");
+    setSearchSkills("");
+    setSearchAvailabilty("Any");
+    searchConsultants();
+  };
+  useEffect(() => {
+    searchConsultants();
+  }, []);
+  return /* @__PURE__ */ jsxs("main", { className: "grid grid-row p-7", children: [
+    /* @__PURE__ */ jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsx("h2", { children: "Consultants" }) }),
+    /* @__PURE__ */ jsxs("div", { className: "bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 mb-2", role: "alert", children: [
+      /* @__PURE__ */ jsx("p", { className: "font-bold", children: "Informational message" }),
+      /* @__PURE__ */ jsx("p", { children: "Please note that those people who appear in those search results are not real. Pictures of indivduals were taken from Unsplash, a royalty free picture." }),
+      /* @__PURE__ */ jsx("p", { children: "Names and locations were randomly assigned to those profiles. Those personal details are fake and does not represent the person in the search results." })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "bg-gray-100 grid grid-cols-4 rounded-md p-2", children: [
+      /* @__PURE__ */ jsxs("div", { children: [
+        "Location ",
+        /* @__PURE__ */ jsx(
+          "input",
+          {
+            type: "text",
+            className: "border-1 bg-white",
+            "aria-label": "location",
+            value: searchLocation,
+            onChange: handleSearchLocation
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxs("div", { children: [
+        "Skills ",
+        /* @__PURE__ */ jsx(
+          "input",
+          {
+            type: "text",
+            className: "border-1 bg-white",
+            "aria-label": "skills",
+            value: searchSkills,
+            onChange: handleSearchSkills
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxs("div", { children: [
+        "Availability ",
+        /* @__PURE__ */ jsxs(
+          "select",
+          {
+            className: "border-1 bg-white",
+            "aria-label": "availability",
+            role: "combobox",
+            value: searchAvailabilty,
+            onChange: handleSearchAvailability,
+            children: [
+              /* @__PURE__ */ jsx("option", { children: "Any" }),
+              /* @__PURE__ */ jsx("option", { children: "Immediate" }),
+              /* @__PURE__ */ jsx("option", { children: "Pending" }),
+              /* @__PURE__ */ jsx("option", { children: "Unavailable" })
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            className: "bg-gray-500 p-2 rounded-m w-20 text-white cursor-pointer mr-4",
+            onClick: () => searchConsultants(),
+            children: "Search"
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            className: "bg-gray-500 p-2 rounded-m w-20 text-white cursor-pointer",
+            onClick: handleReset,
+            children: "Reset"
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "bg-gray-100 rounded-md p-2", children: /* @__PURE__ */ jsxs("p", { children: [
+      "Display Results:",
       /* @__PURE__ */ jsx(
+        "button",
+        {
+          className: "display-results-button",
+          onClick: () => renderSearchResults("portrait"),
+          children: "Portrait"
+        }
+      ),
+      /* @__PURE__ */ jsx(
+        "button",
+        {
+          className: "display-results-button",
+          onClick: () => renderSearchResults("row"),
+          children: "Row"
+        }
+      ),
+      /* @__PURE__ */ jsx(
+        "button",
+        {
+          className: "display-results-button",
+          onClick: () => renderSearchResults("details"),
+          children: "Details"
+        }
+      )
+    ] }) }),
+    searchResults && searchResults.length > 0 ? /* @__PURE__ */ jsxs("div", { className: rowHeaderStyles, children: [
+      displayResults === "row" ? /* @__PURE__ */ jsx(ConsultantRowHeaders, {}) : /* @__PURE__ */ jsx(Fragment, {}),
+      searchResults.map((consultant) => /* @__PURE__ */ jsxs(
         Consultant,
         {
           consultant: {
@@ -445,89 +627,15 @@ const Dashboard = () => {
             location: consultant.location,
             availability: consultant.availability
           },
-          children: /* @__PURE__ */ jsx(ConsultantPortrait, {})
+          children: [
+            displayResults === "portrait" ? /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx(ConsultantPortrait, {}) }) : /* @__PURE__ */ jsx(Fragment, {}),
+            displayResults === "details" ? /* @__PURE__ */ jsx(ConsultantRowDetails, {}) : /* @__PURE__ */ jsx(Fragment, {}),
+            displayResults === "row" ? /* @__PURE__ */ jsx(ConsultantRow, {}) : /* @__PURE__ */ jsx(Fragment, {})
+          ]
         },
         consultant.id
-      ),
-      /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-2 gap-10 pt-5", children: [
-        /* @__PURE__ */ jsx("div", { className: "place-self-end bg-blue-300", children: /* @__PURE__ */ jsx("button", { className: "bg-red-500 p-2 rounded-m w-20 text-white cursor-pointer", onClick: () => handleClick(), children: "No" }) }),
-        /* @__PURE__ */ jsx("div", { className: "place-self-start bg-blue-300", children: /* @__PURE__ */ jsx("button", { className: "bg-green-500 p-2 rounded-md w-20 text-white cursor-pointer", onClick: () => handleClick(), children: "Yes" }) })
-      ] })
-    ] }) : /* @__PURE__ */ jsx("p", { children: "No Consultant details" })
-  ] });
-};
-function meta$1({}) {
-  const title = "Mock Recruitment App";
-  return [{
-    title
-  }, {
-    name: "description",
-    content: "Welcome to " + title
-  }];
-}
-const home = UNSAFE_withComponentProps(function Home() {
-  return /* @__PURE__ */ jsx(Dashboard, {});
-});
-const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: home,
-  meta: meta$1
-}, Symbol.toStringTag, { value: "Module" }));
-const Gallery = () => {
-  const [searchResults, setSearchResults] = useState();
-  const searchConsultants = () => {
-    const data2 = DataService().getAllConsultants();
-    if (data2) {
-      setSearchResults(data2);
-    }
-  };
-  useEffect(() => {
-    searchConsultants();
-  }, []);
-  return /* @__PURE__ */ jsxs("main", { className: "grid grid-row p-7", children: [
-    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h2", { children: "Consultants" }) }),
-    /* @__PURE__ */ jsxs("div", { className: "bg-gray-100 grid grid-cols-4 rounded-md p-1", children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        "Location ",
-        /* @__PURE__ */ jsx("input", { type: "text", className: "border-1 bg-white" })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { children: [
-        "Skills ",
-        /* @__PURE__ */ jsx("input", { type: "text", className: "border-1 bg-white" })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { children: [
-        "Availability ",
-        /* @__PURE__ */ jsxs("select", { className: "border-1 bg-white", children: [
-          /* @__PURE__ */ jsx("option", { children: "Any" }),
-          /* @__PURE__ */ jsx("option", { children: "Available" }),
-          /* @__PURE__ */ jsx("option", { children: "Pending" }),
-          /* @__PURE__ */ jsx("option", { children: "Unavailable" })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("button", { className: "bg-gray-500 p-2 rounded-m w-20 text-white cursor-pointer", children: "Search" }) })
-    ] }),
-    /* @__PURE__ */ jsx("div", { className: "bg-gray-100 grid grid-cols-3 rounded-md p-1", children: /* @__PURE__ */ jsxs("p", { children: [
-      "Display Results:",
-      /* @__PURE__ */ jsx("button", { className: "display-results-button", children: "Portrait" }),
-      /* @__PURE__ */ jsx("button", { className: "display-results-button", children: "Details" }),
-      /* @__PURE__ */ jsx("button", { className: "display-results-button", children: "Row" })
-    ] }) }),
-    searchResults ? /* @__PURE__ */ jsx("div", { children: searchResults.map((consultant) => /* @__PURE__ */ jsx(
-      Consultant,
-      {
-        consultant: {
-          id: consultant.id,
-          name: consultant.name,
-          role: consultant.role,
-          skills: consultant.skills,
-          thumbnail: consultant.thumbnail,
-          location: consultant.location,
-          availability: consultant.availability
-        },
-        children: /* @__PURE__ */ jsx(ConsultantRowDetails, {})
-      },
-      consultant.id
-    )) }) : "<p>No search results available</p>"
+      ))
+    ] }) : /* @__PURE__ */ jsx("p", { children: "No records found" })
   ] });
 };
 function meta({}) {
@@ -542,12 +650,12 @@ function meta({}) {
 const search = UNSAFE_withComponentProps(function Search() {
   return /* @__PURE__ */ jsx(Gallery, {});
 });
-const route2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: search,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-IAQZmdn2.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-DqnGAcSG.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/home-DJQKaR5b.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js", "/assets/dataService-BFgL0HZp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": "search", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-Bh5az4Yg.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js", "/assets/dataService-BFgL0HZp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-c6b13c17.js", "version": "c6b13c17", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-B_Q_TMRP.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-B2T77wIM.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-C7gjH5nT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-c036e38c.js", "version": "c036e38c", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };
@@ -566,21 +674,13 @@ const routes = {
     caseSensitive: void 0,
     module: route0
   },
-  "routes/home": {
-    id: "routes/home",
+  "routes/search": {
+    id: "routes/search",
     parentId: "root",
     path: void 0,
     index: true,
     caseSensitive: void 0,
     module: route1
-  },
-  "routes/search": {
-    id: "routes/search",
-    parentId: "root",
-    path: "search",
-    index: void 0,
-    caseSensitive: void 0,
-    module: route2
   }
 };
 export {

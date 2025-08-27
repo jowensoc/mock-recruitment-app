@@ -58,6 +58,8 @@ export const Gallery = () => {
         setSearchLocation("");
         setSearchSkills("");
         setSearchAvailabilty("Any");
+
+        searchConsultants();
     }
 
     useEffect(() => {
