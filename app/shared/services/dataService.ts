@@ -35,11 +35,8 @@ export const DataService = () => {
             searchResults = searchResults.filter((item) => locationList.includes(item.location.toLowerCase()));
         }
 
-        // const results = currentArray.filter((item) => searchArray.includes(item.trim().toLowerCase()));
-
         if (skillsList.length > 0) {
-            //searchResults = searchResults.filter((item) => item.skills.map((item2) => skillsList.includes(item2.toLowerCase())) )
-            searchResults = searchResults.filter((item) => item.skills.filter((item2) => skillsList.includes(item2.trim().toLowerCase())) )
+            searchResults = searchResults.filter((item) => item.skills.some((item) => skillsList.includes(item.toLowerCase().trim())));
         }
 
         if (availability && availability.trim().toLowerCase() !== "any") {
@@ -54,24 +51,12 @@ export const DataService = () => {
 
         const skillsList = (skills) ? skills.toLowerCase().split(", ") : [];
 
-        const results1 = data.filter((item) => item.skills.filter((item2) => skillsList.includes(item2.trim().toLowerCase())));
-        const results2 = data.filter((item) => item.skills.filter(function(o1) {
-                                                    return skillsList.every(function(o2) {
-                                                        return o1.trim().toLowerCase() ===  o2.trim().toLowerCase();
-                                                    })
-                                                }));
+        //const results1 = data.filter((item) => item.skills.every((item) => skillsList.includes(item.toLowerCase())));
+        //const results1 = data.filter((item) => item.skills.some((item) => item.toLowerCase().trim() === "aws"));
+        const results1 = data.filter((item) => item.skills.some((item) => skillsList.includes(item.toLowerCase().trim())));
 
-        const results3 = data.filter((item) => skillsList.filter(function (o1) {
-                                                    return !item.skills.some(function(o2) {
-                                                        return o1.trim().toLowerCase() ===  o2.trim().toLowerCase();
-                                                    });
-                                                }));
-        
         return {
-            "results1" : results1,
-            "results2" : results2,
-            "results3" : results3,
-            "results4" : [],
+            "results1" : results1
         };
     }
 

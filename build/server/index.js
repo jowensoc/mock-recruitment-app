@@ -253,7 +253,7 @@ const DataService = () => {
       searchResults = searchResults.filter((item) => locationList.includes(item.location.toLowerCase()));
     }
     if (skillsList.length > 0) {
-      searchResults = searchResults.filter((item) => item.skills.filter((item2) => skillsList.includes(item2.trim().toLowerCase())));
+      searchResults = searchResults.filter((item) => item.skills.some((item2) => skillsList.includes(item2.toLowerCase().trim())));
     }
     if (availability && availability.trim().toLowerCase() !== "any") {
       searchResults = searchResults.filter((item) => item.availability.trim().toLowerCase() === availability.trim().toLowerCase());
@@ -262,22 +262,9 @@ const DataService = () => {
   };
   const searchConsultantsSkills = (skills) => {
     const skillsList = skills ? skills.toLowerCase().split(", ") : [];
-    const results1 = data.filter((item) => item.skills.filter((item2) => skillsList.includes(item2.trim().toLowerCase())));
-    const results2 = data.filter((item) => item.skills.filter(function(o1) {
-      return skillsList.every(function(o2) {
-        return o1.trim().toLowerCase() === o2.trim().toLowerCase();
-      });
-    }));
-    const results3 = data.filter((item) => skillsList.filter(function(o1) {
-      return !item.skills.some(function(o2) {
-        return o1.trim().toLowerCase() === o2.trim().toLowerCase();
-      });
-    }));
+    const results1 = data.filter((item) => item.skills.some((item2) => skillsList.includes(item2.toLowerCase().trim())));
     return {
-      "results1": results1,
-      "results2": results2,
-      "results3": results3,
-      "results4": []
+      "results1": results1
     };
   };
   return {
@@ -522,6 +509,7 @@ const Gallery = () => {
     setSearchLocation("");
     setSearchSkills("");
     setSearchAvailabilty("Any");
+    searchConsultants();
   };
   useEffect(() => {
     searchConsultants();
@@ -667,7 +655,7 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: search,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-B_Q_TMRP.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-B2T77wIM.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-CtnP9Z4Z.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-d76d9421.js", "version": "d76d9421", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-B_Q_TMRP.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-B2T77wIM.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-C7gjH5nT.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-c036e38c.js", "version": "c036e38c", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };

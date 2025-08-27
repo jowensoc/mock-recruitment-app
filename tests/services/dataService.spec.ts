@@ -127,12 +127,22 @@ test.describe('dataService ', () => {
         expect(everyResults).toBe(true);
     });
 
-    test('- Search skills ', () => {
-        const data = DataService().searchConsultantsSkills("AWS");
+    test('- Search consultants. Skills: AWS, PHP, Java. Should return results', () => {
+        const data = DataService().searchConsultants("", "", "AWS, java, PHP", "any");
+        expect(data.length).toBeGreaterThan(0);
 
-        //console.log(data.results1);
+        expect(data.some((item) => item.skills.includes("AWS"))).toBe(true);
+        expect(data.some((item) => item.skills.includes("PHP"))).toBe(true);
+        expect(data.some((item) => item.skills.includes("Java"))).toBe(true);
+    });
+
+    test('- Search skills ', () => {
+        const data = DataService().searchConsultantsSkills("AWS, java");
+
+        console.log(data.results1);
         //console.log(data.results2);
-        console.log(data.results3);
+        //console.log(data.results3);
+        //console.log(data.results4);
     });
 
 });
