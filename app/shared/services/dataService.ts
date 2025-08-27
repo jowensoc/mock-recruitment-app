@@ -35,23 +35,52 @@ export const DataService = () => {
             searchResults = searchResults.filter((item) => locationList.includes(item.location.toLowerCase()));
         }
 
-        // if (skillsList.length > 0) {
-        //     searchResults = searchResults.filter((item) => item.skills));
-        // }
+        // const results = currentArray.filter((item) => searchArray.includes(item.trim().toLowerCase()));
+
+        if (skillsList.length > 0) {
+            //searchResults = searchResults.filter((item) => item.skills.map((item2) => skillsList.includes(item2.toLowerCase())) )
+            searchResults = searchResults.filter((item) => item.skills.filter((item2) => skillsList.includes(item2.trim().toLowerCase())) )
+        }
 
         if (availability && availability.trim().toLowerCase() !== "any") {
-            searchResults = searchResults.filter((item) => 
-                item.availability.trim().toLowerCase() === availability.trim().toLowerCase());
+            searchResults = searchResults.filter((item) => item.availability.trim().toLowerCase() === availability.trim().toLowerCase());
         }
         
         return searchResults;
+    }
+
+    const searchConsultantsSkills = (skills?: string) => {
+        let searchResults = data;
+
+        const skillsList = (skills) ? skills.toLowerCase().split(", ") : [];
+
+        const results1 = data.filter((item) => item.skills.filter((item2) => skillsList.includes(item2.trim().toLowerCase())));
+        const results2 = data.filter((item) => item.skills.filter(function(o1) {
+                                                    return skillsList.every(function(o2) {
+                                                        return o1.trim().toLowerCase() ===  o2.trim().toLowerCase();
+                                                    })
+                                                }));
+
+        const results3 = data.filter((item) => skillsList.filter(function (o1) {
+                                                    return !item.skills.some(function(o2) {
+                                                        return o1.trim().toLowerCase() ===  o2.trim().toLowerCase();
+                                                    });
+                                                }));
+        
+        return {
+            "results1" : results1,
+            "results2" : results2,
+            "results3" : results3,
+            "results4" : [],
+        };
     }
 
     return {
         getAllConsultants,
         getConsultantByID,
         getNextConsultant,
-        searchConsultants
+        searchConsultants,
+        searchConsultantsSkills
     }
 }
 
@@ -62,8 +91,8 @@ const data = [
         "role": "Senior Consultant",
         "skills": [
             "Java",
-            "React",
-            "AWS"
+            "Play Framework",
+            "React"
         ],
         "thumbnail": "001.png",
         "location": "Newcastle",
@@ -74,7 +103,7 @@ const data = [
         "name": "Brian",
         "role": "Senior Consultant",
         "skills": [
-            "Java",
+            "CSharp",
             "React",
             "AWS"
         ],
@@ -87,9 +116,10 @@ const data = [
         "name": "Jane",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "ExpressJS",
+            "HTML",
+            "CSS",
+            "Azure"
         ],
         "thumbnail": "003.png",
         "location": "Bristol",
@@ -126,9 +156,9 @@ const data = [
         "name": "Kirsty",
         "role": "Consultant",
         "skills": [
-            "Java",
+            "Python",
             "React",
-            "AWS"
+            "PHP"
         ],
         "thumbnail": "006.png",
         "location": "Newcastle",
@@ -139,9 +169,11 @@ const data = [
         "name": "Abigail",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "Cloudfront",
+            "Azure",
+            "AWS",
+            "DevOps",
+            "Octopus"
         ],
         "thumbnail": "007.png",
         "location": "London",
@@ -152,9 +184,9 @@ const data = [
         "name": "David",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "Rust",
+            "CPlusPlus",
+            "SQL"
         ],
         "thumbnail": "008.png",
         "location": "Birmingham",
@@ -165,9 +197,9 @@ const data = [
         "name": "Kevin",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "Swift",
+            "React Native",
+            "Go"
         ],
         "thumbnail": "009.png",
         "location": "London",
@@ -178,9 +210,9 @@ const data = [
         "name": "Chris",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "Ruby",
+            "Javascript",
+            "ASP.net"
         ],
         "thumbnail": "010.png",
         "location": "Newcastle",
@@ -191,9 +223,9 @@ const data = [
         "name": "Dani",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "Visual Basic",
+            "CSharp",
+            "Apache Server"
         ],
         "thumbnail": "011.png",
         "location": "Newcastle",
@@ -204,9 +236,10 @@ const data = [
         "name": "Jacqui",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "Java Applets",
+            "Java Beans",
+            "EmberJS",
+            "Google Cloud Platform"
         ],
         "thumbnail": "012.png",
         "location": "Newcastle",
@@ -218,8 +251,9 @@ const data = [
         "role": "Consultant",
         "skills": [
             "Java",
-            "React",
-            "AWS"
+            "Mocha",
+            "Cypress",
+            "Junit"
         ],
         "thumbnail": "013.png",
         "location": "London",
@@ -230,9 +264,9 @@ const data = [
         "name": "Lexi",
         "role": "Consultant",
         "skills": [
-            "Java",
-            "React",
-            "AWS"
+            "Kotlin",
+            "Pearl",
+            "GoLang"
         ],
         "thumbnail": "014.png",
         "location": "Newcastle",
