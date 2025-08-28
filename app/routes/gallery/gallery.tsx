@@ -69,7 +69,7 @@ export const Gallery = () => {
 
     return (<main className="grid grid-row p-7">
                 <div className="mb-2">
-                    <h2>Consultants</h2>
+                    <h2 className="text-2xl">Consultants</h2>
                 </div>
                 <div className="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 mb-2" role="alert">
                     <p className="font-bold">Important Information</p>

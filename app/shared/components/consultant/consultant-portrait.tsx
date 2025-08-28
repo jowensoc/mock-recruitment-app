@@ -6,11 +6,11 @@ export const ConsultantPortrait = () => {
     const thumbnail = "/app/assets/images/" + consultant.thumbnail
 
     return (<ConsultantContext.Provider value={{consultant}}>
-                <div>
+                <div className="">
                     <img src={thumbnail}
                     alt={consultant.name}
                     title={consultant.name} 
-                    className="h-46 object-center border-3 border-blue-600 rounded-md m-auto"/>
+                    className="h-46 object-center border-5 border-blue-400 rounded-full m-auto"/>
                 </div>
                 <div className="text-center">
                     <h2>{consultant.name}</h2>
