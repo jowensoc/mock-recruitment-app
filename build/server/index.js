@@ -140,13 +140,13 @@ const ConsultantPortrait = () => {
   const { consultant } = useConsultantContext();
   const thumbnail = "/app/assets/images/" + consultant.thumbnail;
   return /* @__PURE__ */ jsxs(ConsultantContext.Provider, { value: { consultant }, children: [
-    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { className: "", children: /* @__PURE__ */ jsx(
       "img",
       {
         src: thumbnail,
         alt: consultant.name,
         title: consultant.name,
-        className: "h-46 object-center border-3 border-blue-600 rounded-md m-auto"
+        className: "h-46 object-center border-5 border-blue-400 rounded-full m-auto"
       }
     ) }),
     /* @__PURE__ */ jsxs("div", { className: "text-center", children: [
@@ -515,7 +515,7 @@ const Gallery = () => {
     searchConsultants();
   }, []);
   return /* @__PURE__ */ jsxs("main", { className: "grid grid-row p-7", children: [
-    /* @__PURE__ */ jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsx("h2", { children: "Consultants" }) }),
+    /* @__PURE__ */ jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsx("h2", { className: "text-2xl", children: "Consultants" }) }),
     /* @__PURE__ */ jsxs("div", { className: "bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 mb-2", role: "alert", children: [
       /* @__PURE__ */ jsx("p", { className: "font-bold", children: "Important Information" }),
       /* @__PURE__ */ jsx("p", { children: "Please note that those people who appear in those search results are not real. Pictures of indivduals were taken from Unsplash, a royalty free picture website." }),
@@ -655,7 +655,7 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: search,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-B_Q_TMRP.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-B2T77wIM.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-CgFCQl7a.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-6fe6e9cd.js", "version": "6fe6e9cd", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-C5Yahltk.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-HqtwhCqS.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-5H5cJCMd.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-16c47453.js", "version": "16c47453", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };
