@@ -72,12 +72,12 @@ export const Gallery = () => {
                     <h2>Consultants</h2>
                 </div>
                 <div className="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 mb-2" role="alert">
-                    <p className="font-bold">Informational message</p>
+                    <p className="font-bold">Important Information</p>
                     <p>Please note that those people who appear in those search results are not real. 
-                        Pictures of indivduals were taken from Unsplash, a royalty free picture. 
+                        Pictures of indivduals were taken from Unsplash, a royalty free picture website. 
                     </p>
                     <p>Names and locations were randomly assigned to those profiles. 
-                        Those personal details are fake and does not represent the person in the search results.
+                        Those personal details are fake, and does not represent the person shown in the search results.
                     </p>
                 </div>
                 <div className="bg-gray-100 grid grid-cols-4 rounded-md p-2">
