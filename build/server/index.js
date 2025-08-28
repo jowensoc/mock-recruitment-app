@@ -138,7 +138,7 @@ const getAvailabilityClass = (val) => {
 const ConsultantPortrait = () => {
   var _a;
   const { consultant } = useConsultantContext();
-  const thumbnail = "/app/assets/images/" + consultant.thumbnail;
+  const thumbnail = "/assets/images/" + consultant.thumbnail;
   return /* @__PURE__ */ jsxs(ConsultantContext.Provider, { value: { consultant }, children: [
     /* @__PURE__ */ jsx("div", { className: "", children: /* @__PURE__ */ jsx(
       "img",
@@ -173,7 +173,7 @@ const ConsultantPortrait = () => {
 const ConsultantRowDetails = () => {
   var _a;
   const { consultant } = useConsultantContext();
-  const thumbnail = "/app/assets/images/" + consultant.thumbnail;
+  const thumbnail = "/assets/images/" + consultant.thumbnail;
   return /* @__PURE__ */ jsx(ConsultantContext.Provider, { value: { consultant }, children: /* @__PURE__ */ jsxs("div", { className: "bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-5 gap-4", children: [
     /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx(
       "img",
@@ -211,7 +211,7 @@ const ConsultantRowDetails = () => {
 const ConsultantRow = () => {
   var _a;
   const { consultant } = useConsultantContext();
-  "/app/assets/images/" + consultant.thumbnail;
+  "/assets/images/" + consultant.thumbnail;
   return /* @__PURE__ */ jsx(ConsultantContext.Provider, { value: { consultant }, children: /* @__PURE__ */ jsxs("div", { className: "bg-gray-200 p-3 rounded-md mb-1 grid grid-cols-5 gap-2", children: [
     /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: consultant.name }) }),
     /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("p", { children: consultant.location }) }),
@@ -655,7 +655,7 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: search,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-C5Yahltk.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-HqtwhCqS.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-5H5cJCMd.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-16c47453.js", "version": "16c47453", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-tKC4XhlV.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-C5Yahltk.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": ["/assets/root-HqtwhCqS.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/search": { "id": "routes/search", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/search-BNClw3vD.js", "imports": ["/assets/chunk-UH6JLGW7-BnjEZNfp.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-c6904ed0.js", "version": "c6904ed0", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };
