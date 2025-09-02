@@ -66,6 +66,10 @@ export const Gallery = () => {
         searchConsultants();
     }, []);
 
+    useEffect(() => {
+        searchConsultants();
+    }, [searchResults]);
+
 
     return (<main className="grid grid-row p-7">
                 <div className="mb-2">
