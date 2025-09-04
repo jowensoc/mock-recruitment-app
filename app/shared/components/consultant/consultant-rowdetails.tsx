@@ -3,7 +3,7 @@ import { getAvailabilityClass } from "~/shared/utils/helpers";
 
 export const ConsultantRowDetails = () => {
     const { consultant } = useConsultantContext();
-    const thumbnail = "/assets/images/" + consultant.thumbnail;
+    const thumbnail = "/mock-recruitment-app/assets/images/" + consultant.thumbnail;
 
     return (<ConsultantContext.Provider value={{consultant}}>
             <div className="bg-gray-200 p-3 rounded-md mb-4 grid grid-cols-5 gap-4">

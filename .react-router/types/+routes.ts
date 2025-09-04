@@ -13,15 +13,18 @@ type Pages = {
   "/": {
     params: {};
   };
+  "/mock-recruitment-app": {
+    params: {};
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/";
+    page: "/" | "/mock-recruitment-app";
   };
   "routes/search.tsx": {
     id: "routes/search";
-    page: "/";
+    page: "/mock-recruitment-app";
   };
 };
